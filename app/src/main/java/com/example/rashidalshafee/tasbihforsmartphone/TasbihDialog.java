@@ -14,7 +14,7 @@ public class TasbihDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("A simple Tasbeeh app create for learning purpose."+"\n"+"Developer: Rashid Al Shafee"+"\n"+"Co-founder: Team Shunno")
+        builder.setMessage("A simple Tasbeeh app create for learning purpose."+"\n"+"Developer: Rashid Al Shafee"+"\n"+"Co-founder: Team Shunno"+"\n"+"Background Image collected")
                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -16,6 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class LoadData extends AppCompatActivity {
     //HashMap<Date, String> valMp = new HashMap<Date, String>();
@@ -32,12 +34,15 @@ public class LoadData extends AppCompatActivity {
         Map valMp = mainActivity.sharedPreferences.getAll();
         mylist.add(valMp);
         textView = (TextView)findViewById(R.id.txt);
-        Set keySet = valMp.keySet();
+        textView.setMovementMethod(new ScrollingMovementMethod());
+        Map<String, String> map = new TreeMap<String, String>(valMp);
+        Set keySet = map.entrySet();
         Iterator iterator = (Iterator) keySet.iterator();
         while (iterator.hasNext()){
-            String key = (String)iterator.next();
-            String val = (String)valMp.get(key);
-            textView.append(key+ ":" +val+"\n");
+            Map.Entry me2 = (Map.Entry)iterator.next();
+            String key = (String)me2.getKey();
+            String val = (String)me2.getValue();
+            textView.append(key+ ": " +val+"\n");
         }
         fab = (FloatingActionButton)findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
